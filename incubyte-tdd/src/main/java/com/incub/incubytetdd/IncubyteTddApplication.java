@@ -12,15 +12,22 @@ public class IncubyteTddApplication implements CommandLineRunner {
 		if(!StringUtils.hasLength(number) || number.equals("0"))
 			return 0;
 		int result = 0;
-		if(number.contains(",")){
-			String[] nums = number.split("[,\\n]");
+		String delimiter = ",";
+		// Condition for handling different delimiter's
+		if(number.startsWith("//")){
+			delimiter = number.charAt(2)+"";
+			// Found different delimiter, removing the initial string line eg. //;\n
+			number = number.substring(4);
+		}
+		if(number.contains(delimiter)){
+			String[] nums = number.split("["+delimiter+"\\n]");
 		  	if(nums.length<2)
 			  	throw new RuntimeException("String doesn't contain at least 2 numbers to add");
 		    else {
 				result = sumUtil(nums);
 			}
 		}else{
-			String[] nums = number.split("[,\\n]");
+			String[] nums = number.split("["+delimiter+"\\n]");
 			if(nums.length==1) return Integer.parseInt(nums[0]);
 			else{
 				for(String num: nums){
