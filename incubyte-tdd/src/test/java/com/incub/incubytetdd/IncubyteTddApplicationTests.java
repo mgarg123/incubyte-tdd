@@ -38,6 +38,17 @@ class IncubyteTddApplicationTests {
 		int sum5 = incubyteTddApplication.add(input5);
 		Assertions.assertEquals(1, sum5);
 
+		String input6 = "\n\n1\n";
+		int sum6 = incubyteTddApplication.add(input6);
+		Assertions.assertEquals(1, sum6);
+
+		//Handling negative number scenarios
+
+		String input7 = "1,-2,3";
+		Assertions.assertThrows(RuntimeException.class, () -> {
+			incubyteTddApplication.add(input7);
+		});
+
 
 
 	}

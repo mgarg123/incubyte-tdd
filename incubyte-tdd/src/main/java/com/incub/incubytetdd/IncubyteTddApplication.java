@@ -17,9 +17,7 @@ public class IncubyteTddApplication implements CommandLineRunner {
 		  	if(nums.length<2)
 			  	throw new RuntimeException("String doesn't contain at least 2 numbers to add");
 		    else {
-				for(String  num: nums){
-					result += Integer.parseInt(num);
-				}
+				result = sumUtil(nums);
 			}
 		}else{
 			String[] nums = number.split("[,\\n]");
@@ -30,6 +28,19 @@ public class IncubyteTddApplication implements CommandLineRunner {
 						result += Integer.parseInt(num);
 					}
 				}
+			}
+		}
+		return result;
+	}
+
+	int sumUtil(String[] nums){
+		int result  = 0;
+		for(String  num: nums){
+			if(StringUtils.hasLength(num)){
+				int x = Integer.parseInt(num);
+				if(x<0)
+					throw new RuntimeException("negative numbers not allowed: "+x);
+				result += x;
 			}
 		}
 		return result;
