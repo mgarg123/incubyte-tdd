@@ -5,6 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 @SpringBootApplication
 public class IncubyteTddApplication implements CommandLineRunner {
 
@@ -42,13 +47,21 @@ public class IncubyteTddApplication implements CommandLineRunner {
 
 	int sumUtil(String[] nums){
 		int result  = 0;
+		List<Integer> negativeNumList = new ArrayList<>();
 		for(String  num: nums){
 			if(StringUtils.hasLength(num)){
 				int x = Integer.parseInt(num);
-				if(x<0)
-					throw new RuntimeException("negative numbers not allowed: "+x);
+				if(x<0){
+					negativeNumList.add(x);
+					continue;
+				}
 				result += x;
 			}
+		}
+		if(!negativeNumList.isEmpty()){
+			String neg = negativeNumList.stream().map(Objects::toString)
+					.collect(Collectors.joining(","));
+			throw new RuntimeException("Negative numbers not allowed: "+neg);
 		}
 		return result;
 	}

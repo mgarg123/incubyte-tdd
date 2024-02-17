@@ -59,7 +59,7 @@ class IncubyteTddApplicationTests {
 			incubyteTddApplication.add(input12);
 		}).getMessage();
 
-		Assertions.assertEquals("negative numbers not allowed: -3,-4,-5", exceptionMessage);
+		Assertions.assertEquals("Negative numbers not allowed: -3,-4,-5", exceptionMessage);
 
 		// Handling scenarios with change in delimiter, eg: //;\n1;2 -> here delimter is ;
 
