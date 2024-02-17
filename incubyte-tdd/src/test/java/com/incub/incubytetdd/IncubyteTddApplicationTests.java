@@ -34,6 +34,10 @@ class IncubyteTddApplicationTests {
 		int sum4 = incubyteTddApplication.add(input4);
 		Assertions.assertEquals(1, sum4);
 
+		String input5 = "\n1\n";
+		int sum5 = incubyteTddApplication.add(input5);
+		Assertions.assertEquals(1, sum5);
+
 
 
 	}
