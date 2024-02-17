@@ -50,12 +50,16 @@ public class IncubyteTddApplication implements CommandLineRunner {
 		List<Integer> negativeNumList = new ArrayList<>();
 		for(String  num: nums){
 			if(StringUtils.hasLength(num)){
-				int x = Integer.parseInt(num);
-				if(x<0){
-					negativeNumList.add(x);
-					continue;
+				try {
+					int x = Integer.parseInt(num);
+					if (x < 0) {
+						negativeNumList.add(x);
+						continue;
+					}
+					result += x;
+				}catch (NumberFormatException ex){
+					throw new RuntimeException("Invalid delimiters in the number");
 				}
-				result += x;
 			}
 		}
 		if(!negativeNumList.isEmpty()){

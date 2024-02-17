@@ -80,8 +80,13 @@ class IncubyteTddApplicationTests {
 		int sum11 = incubyteTddApplication.add(input11);
 		Assertions.assertEquals(0, sum11);
 
+		//Code with different multiple delimiter
+		String input13 = "1,2,3,3,4:";
+		String exception13Message = Assertions.assertThrows(RuntimeException.class, () -> {
+			incubyteTddApplication.add(input13);
+		}).getMessage();
 
-
+		Assertions.assertEquals("Invalid delimiters in the number",exception13Message);
 
 	}
 
