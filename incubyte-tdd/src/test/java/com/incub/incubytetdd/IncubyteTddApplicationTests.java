@@ -49,6 +49,11 @@ class IncubyteTddApplicationTests {
 			incubyteTddApplication.add(input7);
 		});
 
+		String input8 = "-2,";
+		Assertions.assertThrows(RuntimeException.class, () -> {
+			incubyteTddApplication.add(input8);
+		});
+
 
 
 	}
