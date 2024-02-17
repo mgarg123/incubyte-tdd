@@ -54,6 +54,13 @@ class IncubyteTddApplicationTests {
 			incubyteTddApplication.add(input8);
 		});
 
+		// Handling scenarios with change in delimiter, eg: //;\n1;2 -> here delimter is ;
+
+		String input9 = "//;\n1;2";
+		int sum9 = incubyteTddApplication.add(input9);
+		Assertions.assertEquals(3, sum9);
+
+
 
 
 	}
