@@ -54,11 +54,31 @@ class IncubyteTddApplicationTests {
 			incubyteTddApplication.add(input8);
 		});
 
+		String input12 = "1,2,-3,-4,-5";
+		String exceptionMessage = Assertions.assertThrows(RuntimeException.class, () -> {
+			incubyteTddApplication.add(input12);
+		}).getMessage();
+
+		Assertions.assertEquals("negative numbers not allowed: -3,-4,-5", exceptionMessage);
+
 		// Handling scenarios with change in delimiter, eg: //;\n1;2 -> here delimter is ;
 
 		String input9 = "//;\n1;2";
 		int sum9 = incubyteTddApplication.add(input9);
 		Assertions.assertEquals(3, sum9);
+
+		String input10 = "//:\n1:";
+		String message = Assertions.assertThrows(RuntimeException.class, () -> {
+			int sum10 = incubyteTddApplication.add(input10);
+		}).getMessage();
+
+		Assertions.assertEquals("String doesn't contain at least 2 numbers to add", message);
+
+		//handling other cases
+
+		String input11 = "0";
+		int sum11 = incubyteTddApplication.add(input11);
+		Assertions.assertEquals(0, sum11);
 
 
 
