@@ -30,6 +30,9 @@ class IncubyteTddApplicationTests {
 		Assertions.assertThrows(RuntimeException.class, () -> {
 			incubyteTddApplication.add(input3);
 		});
+		String input4 = "1\n";
+		int sum4 = incubyteTddApplication.add(input4);
+		Assertions.assertEquals(1, sum4);
 
 
 

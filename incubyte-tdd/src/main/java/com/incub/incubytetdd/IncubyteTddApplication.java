@@ -21,6 +21,9 @@ public class IncubyteTddApplication implements CommandLineRunner {
 					result += Integer.parseInt(num);
 				}
 			}
+		}else{
+			String[] nums = number.split("[,\\n]");
+			if(nums.length==1) return Integer.parseInt(nums[0]);
 		}
 		return result;
 	}
